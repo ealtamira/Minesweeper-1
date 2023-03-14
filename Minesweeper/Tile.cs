@@ -26,6 +26,7 @@ namespace Minesweeper
                 Size = new Size(Engine.size, Engine.size),
                 Location = new Point(i * Engine.size, j * Engine.size),
                 BackgroundImageLayout = ImageLayout.Stretch,
+                BackgroundImage = Engine.form.unclicked,
                 
             };
             button.Click += Button_Click;
@@ -39,17 +40,19 @@ namespace Minesweeper
                 Button pressed = sender as Button;
                 if(pressed != null)
                 {
-                    if(pressed.BackgroundImage == null)
+                    if(pressed.BackgroundImage == Engine.form.unclicked)
                     {
                         pressed.BackgroundImage = Engine.form.flag;
+                        Engine.flagsplaced++;
                         canBePressed = false;
                     }
                     else
                     {
-                        pressed.BackgroundImage = null;
+                        pressed.BackgroundImage = Engine.form.unclicked;
+                        Engine.flagsplaced--;
                         canBePressed = true;
                     }
-                    
+                    Engine.form.LabelUpdate();
                 }
             }
         }
@@ -59,28 +62,37 @@ namespace Minesweeper
             Button pressed = sender as Button;
             if (pressed != null)
             {
+                if (!Engine.hasStarted)
+                {
+                    Engine.GenerateMines(line, column);
+                }
                 if (canBePressed)
                 {
-                    pressed.Enabled = false;
-                    if(this.Value == 0)
-                    {
-                        FindAllNeighbors();
-                        return;
-                    }
-                    else if(this.Value == 9)
-                    {
-                        pressed.BackgroundImage = Engine.form.images[this.Value];
-                        this.canBePressed = false;
-
-                        MessageBox.Show("You died", "Game Over");
-                        //ShowAllMines;
-                        return;
-                    }
-                    pressed.BackgroundImage = Engine.form.images[this.Value];
-                    this.canBePressed = false;
+                    RevealButton(pressed);
                 }
             }
                 
+        }
+
+        void RevealButton(Button pressed)
+        {
+            pressed.Enabled = false;
+            if (this.Value == 0)
+            {
+                FindAllNeighbors();
+                return;
+            }
+            else if (this.Value == 9)
+            {
+                pressed.BackgroundImage = Engine.form.images[this.Value];
+                this.canBePressed = false;
+
+                MessageBox.Show("You died", "Game Over");
+                Engine.ShowAllMines();
+                return;
+            }
+            pressed.BackgroundImage = Engine.form.images[this.Value];
+            this.canBePressed = false;
         }
         void FindAllNeighbors()
         {

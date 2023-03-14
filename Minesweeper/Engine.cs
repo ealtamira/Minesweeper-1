@@ -14,14 +14,20 @@ namespace Minesweeper
         public static Tile[,] bts;
         public static int lines;
         public static int size;
+        public static bool hasStarted;
+        public static int mines;
+        public static int flagsplaced;
 
         public static void Init(Form1 f, int n)
         {
             rng = new Random();
+            mines = 15;
+            flagsplaced = 0;
             form = f;
             lines = n;
             size = form.pictureBox1.Width / lines;
             bts = new Tile[lines,lines];
+            hasStarted = false;
 
             for(int i = 0; i < lines; i++)
             {
@@ -30,17 +36,18 @@ namespace Minesweeper
                     bts[i, j] = new Tile(i,j);
                 }
             }
-            GenerateMines(15);
         }
-        public static void GenerateMines(int mines)
+        public static void GenerateMines(int pressedline, int pressedcolumn)
         {
+            int mines = Engine.mines;
+            Engine.hasStarted = true;
             for(int i = 0; i < mines; i++)
             {
                 int l, c;
                 do {
                     l = rng.Next(lines);
                     c = rng.Next(lines);
-                } while(bts[l, c].Value == 9);
+                } while((l >= pressedline - rng.Next(1,3) && l <= pressedline + rng.Next(1, 3) && c >= pressedcolumn - rng.Next(1, 3) && c <= pressedcolumn + rng.Next(1, 3)) || bts[l, c].Value == 9);
                 bts[l, c].Value = 9;
                 //bts[l, c].button.BackgroundImage = Engine.form.flag;
                 for(int k = l - 1; k <= l + 1; k++)
@@ -64,6 +71,34 @@ namespace Minesweeper
                 }
             }
 
+        }
+        public static void ShowAllMines()
+        {
+            for(int i = 0; i < lines; i++)
+            {
+                for(int j = 0; j < lines; j++)
+                {
+                    bts[i, j].canBePressed = false;
+                    bts[i, j].button.Enabled = false;
+                    if (bts[i, j].Value == 9)
+                    {
+                        bts[i, j].button.BackgroundImage = form.images[9];
+                    }
+                }
+            }
+        }
+        public static void Reset()
+        {
+            size = form.pictureBox1.Width / lines;
+            hasStarted = false;
+
+            for (int i = 0; i < lines; i++)
+            {
+                for (int j = 0; j < lines; j++)
+                {
+                    bts[i, j] = new Tile(i, j);
+                }
+            }
         }
     }
 }
