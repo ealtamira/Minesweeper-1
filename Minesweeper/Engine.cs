@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -17,11 +18,17 @@ namespace Minesweeper
         public static bool hasStarted;
         public static int mines;
         public static int flagsplaced;
+        public static int clearedboxes;
+        public static System.Windows.Forms.Timer timer;
 
-        public static void Init(Form1 f, int n)
+        public static void Init(Form1 f, int n, int m)
         {
+            clearedboxes = 0;
+            timer = new System.Windows.Forms.Timer();
+            timer.Interval = 1000;
+            timer.Tick += Timer_Tick;
             rng = new Random();
-            mines = 15;
+            mines = m;
             flagsplaced = 0;
             form = f;
             lines = n;
@@ -37,6 +44,22 @@ namespace Minesweeper
                 }
             }
         }
+
+        private static void Timer_Tick(object? sender, EventArgs e)
+        {
+            form.TimerUpdate();
+        }
+        public static void WinCheck()
+        {
+            //MessageBox.Show(clearedboxes.ToString());
+            if(clearedboxes == (lines * lines) - mines)
+            {
+                MessageBox.Show("You win!", "Congratulations");
+                timer.Stop();
+                ShowAllMines();
+            }
+        }
+
         public static void GenerateMines(int pressedline, int pressedcolumn)
         {
             int mines = Engine.mines;
@@ -89,8 +112,11 @@ namespace Minesweeper
         }
         public static void Reset()
         {
+            clearedboxes = 0;
             size = form.pictureBox1.Width / lines;
             hasStarted = false;
+            timer.Stop();
+            flagsplaced = 0;
 
             for (int i = 0; i < lines; i++)
             {

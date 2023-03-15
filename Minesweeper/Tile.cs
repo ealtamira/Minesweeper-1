@@ -65,6 +65,7 @@ namespace Minesweeper
                 if (!Engine.hasStarted)
                 {
                     Engine.GenerateMines(line, column);
+                    Engine.timer.Start();
                 }
                 if (canBePressed)
                 {
@@ -76,23 +77,27 @@ namespace Minesweeper
 
         void RevealButton(Button pressed)
         {
+
             pressed.Enabled = false;
+            Engine.clearedboxes++;
             if (this.Value == 0)
             {
                 FindAllNeighbors();
+                Engine.WinCheck();
                 return;
             }
             else if (this.Value == 9)
             {
                 pressed.BackgroundImage = Engine.form.images[this.Value];
                 this.canBePressed = false;
-
+                Engine.timer.Stop();
                 MessageBox.Show("You died", "Game Over");
                 Engine.ShowAllMines();
                 return;
             }
             pressed.BackgroundImage = Engine.form.images[this.Value];
             this.canBePressed = false;
+            Engine.WinCheck();
         }
         void FindAllNeighbors()
         {
@@ -109,13 +114,31 @@ namespace Minesweeper
                         {
                             if (Engine.bts[i,j].canBePressed && Engine.bts[i, j].Value == 0)
                             {
-                                Engine.bts[i, j].button.Enabled = false;
+                                if(Engine.bts[i, j].button.Enabled)
+                                {
+                                    Engine.bts[i, j].button.Enabled = false;
+                                    Engine.clearedboxes++;
+                                }
+                                
                                 Engine.bts[i, j].canBePressed = false;
                                 neighbors.Enqueue(Engine.bts[i, j]);
                             }
                             else
                             {
-                                Engine.bts[i, j].button.Enabled = false;
+                                if (Engine.bts[i,j].button.BackgroundImage == Engine.form.flag)
+                                {
+                                    Engine.flagsplaced--;
+                                    Engine.form.LabelUpdate();
+                                    if(Engine.bts[i, j].Value == 0)
+                                    {
+                                        neighbors.Enqueue(Engine.bts[i, j]);
+                                    }
+                                }
+                                if (Engine.bts[i, j].button.Enabled)
+                                {
+                                    Engine.bts[i, j].button.Enabled = false;
+                                    Engine.clearedboxes++;
+                                }
                                 Engine.bts[i, j].canBePressed = false;
                                 Engine.bts[i, j].button.BackgroundImage = Engine.form.images[Engine.bts[i, j].Value];
                                 

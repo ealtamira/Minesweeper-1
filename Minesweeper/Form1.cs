@@ -25,6 +25,7 @@ namespace Minesweeper
             PictureBox1Load();
             Button1Load();
             Label1Load();
+            Label2Load();
             StartPosition = FormStartPosition.CenterScreen;
         }
         void PictureBox1Load()
@@ -48,24 +49,44 @@ namespace Minesweeper
             label1.Width = 150;
             label1.AutoSize = false;
             label1.ForeColor = Color.Red;
-            label1.Font = new Font("Arial", 30);
+            label1.Font = new Font("Algerian", 33);
             label1.TextAlign = ContentAlignment.MiddleCenter;
-            label1.Location = new Point((Width - button1.Location.X) / 2 - label1.Width + 5 , ((pictureBox1.Location.Y) / 2) - label1.Height / 2);
+            label1.Location = new Point(pictureBox1.Location.X + pictureBox1.Width - label1.Width, ((pictureBox1.Location.Y) / 2) - label1.Height / 2);
 
+        }
+        void Label2Load()
+        {
+            label2.Text = "000";
+            label2.BackColor = Color.Black;
+            label2.Height = 80;
+            label2.Width = 150;
+            label2.AutoSize = false;
+            label2.ForeColor = Color.Red;
+            label2.Font = new Font("Algerian", 33);
+            label2.TextAlign = ContentAlignment.MiddleCenter;
+            label2.Location = new Point(pictureBox1.Location.X, ((pictureBox1.Location.Y) / 2) - label1.Height / 2);
+
+        }
+        public void TimerUpdate()
+        {
+            label2.Text = (int.Parse(label2.Text) + 1).ToString("000");
         }
         public void LabelUpdate()
         {
-            label1.Text = (Engine.mines - Engine.flagsplaced).ToString();
+            label1.Text = (Engine.mines - Engine.flagsplaced).ToString("000");
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            Engine.Init(this, 10);
+            Engine.Init(this, 16, 40);
+            LabelUpdate();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             pictureBox1.Controls.Clear();
+            label2.Text = "000";
             Engine.Reset();
+            LabelUpdate();
         }
     }
 }
