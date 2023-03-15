@@ -30,7 +30,6 @@ namespace Minesweeper
         {
             Engine.Init(this, 16, 40); // 16 - number of lines and columns, 40 - number of mines
             LabelUpdate();
-
         }
         void LoadVisuals()
         {
@@ -38,7 +37,6 @@ namespace Minesweeper
             Button1Load();
             Label1Load();
             Label2Load();
-
         }
         void PictureBox1Load()
         {

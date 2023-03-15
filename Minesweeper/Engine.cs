@@ -70,7 +70,7 @@ namespace Minesweeper
                 do {
                     l = rng.Next(lines);
                     c = rng.Next(lines);
-                } while((l >= pressedline - rng.Next(1,3) && l <= pressedline + rng.Next(1, 3) && c >= pressedcolumn - rng.Next(1, 3) && c <= pressedcolumn + rng.Next(1, 3)) || bts[l, c].Value == 9);
+                } while((l >= pressedline - rng.Next(1, 4) && l <= pressedline + rng.Next(1, 4) && c >= pressedcolumn - rng.Next(1, 4) && c <= pressedcolumn + rng.Next(1, 4)) || bts[l, c].Value == 9);
                 bts[l, c].Value = 9;
                 //bts[l, c].button.BackgroundImage = Engine.form.flag;
                 for(int k = l - 1; k <= l + 1; k++)
