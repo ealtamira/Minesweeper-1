@@ -15,23 +15,35 @@ namespace Minesweeper
             Image.FromFile(@"../../../Images/6.jpg"),
             Image.FromFile(@"../../../Images/7.jpg"),
             Image.FromFile(@"../../../Images/8.jpg"),
-            Image.FromFile(@"../../../Images/mine.jpg")
+            Image.FromFile(@"../../../Images/mine.jpg"),
+            Image.FromFile(@"../../../Images/defusedmine.jpg")
         };
         public Form1()
         {
             InitializeComponent();
             Width = 900;
             Height = 900;
+            LoadVisuals();
+            StartPosition = FormStartPosition.CenterScreen;
+        }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            Engine.Init(this, 16, 40); // 16 - number of lines and columns, 40 - number of mines
+            LabelUpdate();
+
+        }
+        void LoadVisuals()
+        {
             PictureBox1Load();
             Button1Load();
             Label1Load();
             Label2Load();
-            StartPosition = FormStartPosition.CenterScreen;
+
         }
         void PictureBox1Load()
         {
-            pictureBox1.Height = Height - 200;
-            pictureBox1.Width = Width - 200;
+            pictureBox1.Height = 704;
+            pictureBox1.Width = 704;
             pictureBox1.Location = new Point((Height - pictureBox1.Height) / 2, (Width - pictureBox1.Width) / 2);
         }
         void Button1Load()
@@ -75,11 +87,7 @@ namespace Minesweeper
         {
             label1.Text = (Engine.mines - Engine.flagsplaced).ToString("000");
         }
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            Engine.Init(this, 16, 40);
-            LabelUpdate();
-        }
+        
 
         private void button1_Click(object sender, EventArgs e)
         {

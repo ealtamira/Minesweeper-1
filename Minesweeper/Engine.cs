@@ -54,9 +54,9 @@ namespace Minesweeper
             //MessageBox.Show(clearedboxes.ToString());
             if(clearedboxes == (lines * lines) - mines)
             {
-                MessageBox.Show("You win!", "Congratulations");
                 timer.Stop();
-                ShowAllMines();
+                MessageBox.Show("You win!", "Congratulations");               
+                ShowAllDefusedMines();
             }
         }
 
@@ -106,6 +106,21 @@ namespace Minesweeper
                     if (bts[i, j].Value == 9)
                     {
                         bts[i, j].button.BackgroundImage = form.images[9];
+                    }
+                }
+            }
+        }
+        public static void ShowAllDefusedMines()
+        {
+            for (int i = 0; i < lines; i++)
+            {
+                for (int j = 0; j < lines; j++)
+                {
+                    bts[i, j].canBePressed = false;
+                    bts[i, j].button.Enabled = false;
+                    if (bts[i, j].Value == 9)
+                    {
+                        bts[i, j].button.BackgroundImage = form.images[10];
                     }
                 }
             }
