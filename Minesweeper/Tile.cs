@@ -37,7 +37,7 @@ namespace Minesweeper
         {
             if(e.Button == MouseButtons.Right)
             {
-                Button pressed = sender as Button;
+                Button? pressed = sender as Button;
                 if(pressed != null)
                 {
                     if(pressed.BackgroundImage == Engine.form.unclicked)
@@ -59,7 +59,7 @@ namespace Minesweeper
 
         private void Button_Click(object? sender, EventArgs e)
         {
-            Button pressed = sender as Button;
+            Button? pressed = sender as Button;
             if (pressed != null)
             {
                 if (!Engine.hasStarted)
