@@ -42,9 +42,6 @@
             />
         
         <!-- Game Board Grid -->
-        <Image x:Name="GameBoard"
-               Width="704" Height="704"
-               VerticalAlignment="Center"
-               HorizontalAlignment="Center"/>
+
     </Grid>
 </Window>
