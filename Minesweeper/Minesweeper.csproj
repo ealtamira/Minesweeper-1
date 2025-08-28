@@ -18,6 +18,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'" />
 
   <ItemGroup>
+    <None Remove="Resources\Free Pixel Art Forest\Preview\Background.png" />
     <None Remove="Resources\Images\0.jpg" />
     <None Remove="Resources\Images\1.jpg" />
     <None Remove="Resources\Images\2.jpg" />
@@ -31,9 +32,13 @@
     <None Remove="Resources\Images\flag.png" />
     <None Remove="Resources\Images\mine.jpg" />
     <None Remove="Resources\Images\unclicked.jpg" />
+    <None Remove="Resources\Nature Landscapes Free Pixel Art\nature_1\orig.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\Free Pixel Art Forest\Preview\Background.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\Images\0.jpg">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
@@ -71,6 +76,9 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Images\unclicked.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Nature Landscapes Free Pixel Art\nature_1\orig.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
