@@ -52,6 +52,19 @@ namespace Minesweeper.Pages
             InitializeComponent();
             ResetButton.Click += Reset_Click;
 
+            Engine.GameOver += () =>
+            {
+                DisableBoard();
+                MessageBox.Show("You died", "Game Over");
+            };
+
+            Engine.GameWon += () =>
+            {
+                DisableBoard();
+                MessageBox.Show("You win!", "Congratulations");
+            };
+
+
             GameBoard.Background = (Brush)Application.Current.Resources["GameBoardBackground"];
 
 
@@ -87,6 +100,13 @@ namespace Minesweeper.Pages
             GameBoard.Children.Clear();
             buttons = new Button[boardSize, boardSize];
 
+            int padding = 5;
+            int totalWidth = boardSize * tileSize + padding * 2;
+            int totalHeight = boardSize * tileSize + padding * 2;
+
+            GameBoard.Width = totalWidth;
+            GameBoard.Height = totalHeight;
+
             for (int r = 0; r < boardSize; r++)
             {
                 for (int c = 0; c < boardSize; c++)
@@ -107,8 +127,8 @@ namespace Minesweeper.Pages
                     btn.Template = template;
                     btn.Focusable = false;
 
-                    Canvas.SetLeft(btn, c * tileSize);
-                    Canvas.SetTop(btn, r * tileSize);
+                    Canvas.SetLeft(btn, padding + c * tileSize);
+                    Canvas.SetTop(btn, padding + r * tileSize);
 
                     btn.Click += Tile_LeftClick;
                     btn.MouseRightButtonUp += Tile_RightClick;
@@ -158,6 +178,18 @@ namespace Minesweeper.Pages
                 btn.Background = UnclickedImage; // Use ImageBrush directly
             }
         }
+
+        private void DisableBoard()
+        {
+            for (int r = 0; r < boardSize; r++)
+            {
+                for (int c = 0; c < boardSize; c++)
+                {
+                    buttons[r, c].IsEnabled = false;
+                }
+            }
+        }
+
 
         private void Reset_Click(object sender, RoutedEventArgs e)
         {
