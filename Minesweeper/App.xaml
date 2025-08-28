@@ -1,8 +1,17 @@
 ﻿<Application x:Class="Minesweeper.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib" 
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+
+        <!-- Global Settings -->
+        <sys:Int32 x:Key="BoardSize">10</sys:Int32>
+        <sys:Int32 x:Key="MineCount">10</sys:Int32>
+        
+        <!-- Global Background Images -->
+        <ImageBrush x:Key="AppBackground" ImageSource="/Resources/Free Pixel Art Forest/Preview/Background.png"/>
+
         <!-- COLORS -->
         <Color x:Key="PrimaryColor">#FF6D5EFC</Color>
         <Color x:Key="SecondaryColor">#FF00E5FF</Color>
@@ -20,6 +29,38 @@
         <SolidColorBrush x:Key="TilePressedBrush" Color="{StaticResource TilePressedColor}"/>
         <SolidColorBrush x:Key="BackgroundBrush" Color="{StaticResource BackgroundColor}"/>
         <SolidColorBrush x:Key="TextBrush" Color="{StaticResource TextColor}"/>
+
+        <!-- TextBox Style -->
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Width" Value="60"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="BorderBrush" Value="#FF4CAF50"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Background" Value="#FFF0F0F0"/>
+        </Style>
+
+        <!-- TextBlock Style for Main Menu Title -->
+        <Style x:Key="MainMenuTitleStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="36"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="#FF4CAF50"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="20"/>
+        </Style>
+
+        <!-- StackPanel Style for MainMenuPage -->
+        <Style x:Key="MainMenuStackPanelStyle" TargetType="StackPanel">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+
+        <!-- StackPanel Style for Pages -->
+        <Style TargetType="StackPanel">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
 
         <!-- TILE BUTTON STYLE -->
         <Style x:Key="TileButtonStyle" TargetType="Button">

@@ -2,10 +2,12 @@
 using System.Drawing;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using Brush = System.Windows.Media.Brush;
 
 namespace Minesweeper.Pages
 {
@@ -34,20 +36,24 @@ namespace Minesweeper.Pages
 
         // --- Board & Images ---
         private Button[,] buttons;
-        private int boardSize = 10;
-        private int mineCount = 10;
+        int boardSize = (int)Application.Current.Resources["BoardSize"];
+        int mineCount = (int)Application.Current.Resources["MineCount"];
         private int tileSize = 50;
 
         private ImageBrush UnclickedImage;
         private ImageBrush FlagImage;
         private ImageBrush[] TileImages;
         private Frame _mainFrame;
+
         public GameBoardPage(Frame mainFrame)
         {
             _mainFrame = mainFrame;
             Engine.Init(boardSize, mineCount, tileSize);
             InitializeComponent();
             ResetButton.Click += Reset_Click;
+
+            GameBoard.Background = (Brush)Application.Current.Resources["GameBoardBackground"];
+
 
             LoadTileImages();
             InitializeBoard();
@@ -90,14 +96,23 @@ namespace Minesweeper.Pages
                         Width = tileSize,
                         Height = tileSize,
                         Background = UnclickedImage,
-                        Tag = new System.Windows.Point(r, c)
+                        Tag = new System.Windows.Point(r, c),
                     };
+
+                    var template = new ControlTemplate(typeof(Button));
+                    var borderFactory = new FrameworkElementFactory(typeof(Border));
+                    borderFactory.SetBinding(Border.BackgroundProperty,
+                        new System.Windows.Data.Binding("Background") { RelativeSource = RelativeSource.TemplatedParent });
+                    template.VisualTree = borderFactory;
+                    btn.Template = template;
+                    btn.Focusable = false;
 
                     Canvas.SetLeft(btn, c * tileSize);
                     Canvas.SetTop(btn, r * tileSize);
 
                     btn.Click += Tile_LeftClick;
                     btn.MouseRightButtonUp += Tile_RightClick;
+
 
                     GameBoard.Children.Add(btn);
                     buttons[r, c] = btn;

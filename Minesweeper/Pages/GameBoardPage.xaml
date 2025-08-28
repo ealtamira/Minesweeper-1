@@ -10,11 +10,6 @@
 
     <Grid>
 
-        <!-- Background -->
-        <Canvas Name="BackGround" 
-                Width="600" Height="700" 
-                Background="White" />
-        
         <!-- Game Board -->
         <Canvas Name="GameBoard" 
                 Width="500" Height="500" 

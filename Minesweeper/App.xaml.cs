@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Media;
 
 namespace Minesweeper
 {
@@ -15,7 +16,6 @@ namespace Minesweeper
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            // Custom startup code
         }
 
         protected override void OnExit(ExitEventArgs e)

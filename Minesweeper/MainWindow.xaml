@@ -4,5 +4,8 @@
         WindowStartupLocation="CenterScreen"
         Title="Minesweeper" Height="900" Width="900">
 
-    <Frame Name="MainFrame" NavigationUIVisibility="Hidden"/>
+    <Grid Background="{DynamicResource AppBackground}">
+        <Frame Name="MainFrame" NavigationUIVisibility="Hidden"/>
+    </Grid>
+
 </Window>
