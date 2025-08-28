@@ -3,6 +3,93 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+        <!-- COLORS -->
+        <Color x:Key="PrimaryColor">#FF6D5EFC</Color>
+        <Color x:Key="SecondaryColor">#FF00E5FF</Color>
+        <Color x:Key="TileColor">#FFEFEFEF</Color>
+        <Color x:Key="TileHoverColor">#FFD6D6D6</Color>
+        <Color x:Key="TilePressedColor">#FFBFBFBF</Color>
+        <Color x:Key="BackgroundColor">#FF1A1A1A</Color>
+        <Color x:Key="TextColor">#FFF0F0F0</Color>
 
+        <!-- BRUSHES -->
+        <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource PrimaryColor}"/>
+        <SolidColorBrush x:Key="SecondaryBrush" Color="{StaticResource SecondaryColor}"/>
+        <SolidColorBrush x:Key="TileBrush" Color="{StaticResource TileColor}"/>
+        <SolidColorBrush x:Key="TileHoverBrush" Color="{StaticResource TileHoverColor}"/>
+        <SolidColorBrush x:Key="TilePressedBrush" Color="{StaticResource TilePressedColor}"/>
+        <SolidColorBrush x:Key="BackgroundBrush" Color="{StaticResource BackgroundColor}"/>
+        <SolidColorBrush x:Key="TextBrush" Color="{StaticResource TextColor}"/>
+
+        <!-- TILE BUTTON STYLE -->
+        <Style x:Key="TileButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="50"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="{StaticResource TextBrush}"/>
+            <Setter Property="Background" Value="{StaticResource TileBrush}"/>
+            <Setter Property="BorderBrush" Value="#FF888888"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="6"
+                                SnapsToDevicePixels="True"
+                                Effect="{StaticResource TileShadow}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="{StaticResource TileHoverBrush}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="{StaticResource TilePressedBrush}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="border" Property="Background" Value="#FFAAAAAA"/>
+                                <Setter Property="Foreground" Value="#FF666666"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- SHADOW EFFECT -->
+        <DropShadowEffect x:Key="TileShadow" Color="Black" BlurRadius="5" ShadowDepth="2" Opacity="0.3"/>
+
+        <!-- MODERN BUTTON STYLE (for Reset, Back, Menu buttons) -->
+        <Style x:Key="ModernButtonStyle" TargetType="Button">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="Red"/>
+            <Setter Property="Background" Value="{StaticResource BackgroundBrush}"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="6">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="{StaticResource SecondaryBrush}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#FF4B00CC"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Application.Resources>
 </Application>
