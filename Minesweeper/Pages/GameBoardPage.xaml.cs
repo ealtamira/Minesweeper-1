@@ -18,6 +18,7 @@ namespace Minesweeper.Pages
     public partial class GameBoardPage : Page
     {
         private SoundPlayer click = new SoundPlayer(Properties.Resources.pop);
+        private SoundPlayer bgSounds = new SoundPlayer(Properties.Resources.main_menu);
         private SoundPlayer mark = new SoundPlayer(Properties.Resources.click);
         private SoundPlayer boom = new SoundPlayer(Properties.Resources.explosion);
         private SoundPlayer winnar = new SoundPlayer(Properties.Resources.winnar);
@@ -55,20 +56,24 @@ namespace Minesweeper.Pages
             _mainFrame = mainFrame;
             Engine.Init(boardSize, mineCount, tileSize);
             InitializeComponent();
+            bgSounds.PlayLooping();
+
             ResetButton.Click += Reset_Click;
 
             Engine.GameOver += () =>
             {
                 boom.Play();
                 DisableBoard();
-                MessageBox.Show("You died", "Game Over");
+                
+                boom.Stop();
             };
 
             Engine.GameWon += () =>
             {
                 winnar.Play();
                 DisableBoard();
-                MessageBox.Show("You win!", "Congratulations");
+                
+                winnar.Stop();
             };
 
 

@@ -19,12 +19,6 @@
 
   <ItemGroup>
 
-    <None Remove="Resources\Audio\click.wav" />
-    <None Remove="Resources\Audio\explosion.wav" />
-    <None Remove="Resources\Audio\main_menu.wav" />
-    <None Remove="Resources\Audio\pop.wav" />
-    <None Remove="Resources\Audio\winnar.wav" />
-
     <None Remove="Resources\Free Pixel Art Forest\Preview\Background.png" />
     <None Remove="Resources\Images\0.jpg" />
     <None Remove="Resources\Images\1.jpg" />
@@ -40,15 +34,6 @@
     <None Remove="Resources\Images\mine.jpg" />
     <None Remove="Resources\Images\unclicked.jpg" />
     <None Remove="Resources\Nature Landscapes Free Pixel Art\nature_1\orig.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-
-    <EmbeddedResource Include="Resources\Audio\click.wav" />
-    <EmbeddedResource Include="Resources\Audio\explosion.wav" />
-    <EmbeddedResource Include="Resources\Audio\main_menu.wav" />
-    <EmbeddedResource Include="Resources\Audio\pop.wav" />
-    <EmbeddedResource Include="Resources\Audio\winnar.wav" />
   </ItemGroup>
 
   <ItemGroup>
