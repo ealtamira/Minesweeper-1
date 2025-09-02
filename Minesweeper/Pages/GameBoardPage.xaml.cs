@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Media;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -16,6 +17,10 @@ namespace Minesweeper.Pages
     /// </summary>
     public partial class GameBoardPage : Page
     {
+        private SoundPlayer click = new SoundPlayer(Properties.Resources.pop);
+        private SoundPlayer mark = new SoundPlayer(Properties.Resources.click);
+        private SoundPlayer boom = new SoundPlayer(Properties.Resources.explosion);
+        private SoundPlayer winnar = new SoundPlayer(Properties.Resources.winnar);
         // --- Convert WinForms Image to WPF ImageBrush ---
         private ImageBrush ConvertToBrush(System.Drawing.Image img)
         {
@@ -54,12 +59,14 @@ namespace Minesweeper.Pages
 
             Engine.GameOver += () =>
             {
+                boom.Play();
                 DisableBoard();
                 MessageBox.Show("You died", "Game Over");
             };
 
             Engine.GameWon += () =>
             {
+                winnar.Play();
                 DisableBoard();
                 MessageBox.Show("You win!", "Congratulations");
             };
@@ -154,6 +161,7 @@ namespace Minesweeper.Pages
 
         private void Tile_LeftClick(object sender, RoutedEventArgs e)
         {
+            click.Play();
             var btn = sender as Button;
             if (btn == null) return;
 
@@ -163,6 +171,7 @@ namespace Minesweeper.Pages
 
         private void Tile_RightClick(object sender, MouseButtonEventArgs e)
         {
+            mark.Play();
             var btn = sender as Button;
             if (btn == null) return;
 
