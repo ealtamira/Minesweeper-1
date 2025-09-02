@@ -56,7 +56,7 @@ namespace Minesweeper.Pages
             _mainFrame = mainFrame;
             Engine.Init(boardSize, mineCount, tileSize);
             InitializeComponent();
-            
+
 
             ResetButton.Click += Reset_Click;
 
@@ -79,7 +79,6 @@ namespace Minesweeper.Pages
             LoadTileImages();
             InitializeBoard();
             HookEngineEvents();
-            bgSounds.PlayLooping();
         }
 
         private void LoadTileImages()
@@ -108,7 +107,6 @@ namespace Minesweeper.Pages
         {
             GameBoard.Children.Clear();
             buttons = new Button[boardSize, boardSize];
-            bgSounds.Load();
 
             int padding = 5;
             int totalWidth = boardSize * tileSize + padding * 2;

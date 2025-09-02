@@ -26,7 +26,6 @@ namespace Minesweeper.Pages
         private void StartGameButton_Click(object sender, RoutedEventArgs e)
         {
             _mainFrame.Navigate(new GameBoardPage(_mainFrame));
-            bgm.Stop();
         }
 
         private void Setting_Click(object sender, RoutedEventArgs e)
