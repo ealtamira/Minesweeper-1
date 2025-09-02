@@ -79,6 +79,8 @@ namespace Minesweeper.Pages
             mainFrame.Navigate(new Pages.MainMenuPage(mainFrame));
         }
 
+
+
         private void BackgroundRadio_Checked(object sender, RoutedEventArgs e)
         {
             if (bgImages == null) return;
@@ -95,5 +97,9 @@ namespace Minesweeper.Pages
                 PreviewArea.Background = bgImages[4];
         }
 
+        private void GameMode_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
