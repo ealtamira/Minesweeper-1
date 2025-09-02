@@ -22,7 +22,8 @@
         <!-- Background Selector -->
         <TextBlock Text="Background:" Margin="0,10,0,5"/>
         <WrapPanel>
-            <RadioButton x:Name="Bg1Radio" Content="Background 1" GroupName="Backgrounds" IsChecked="True" Checked="BackgroundRadio_Checked" Margin="5"/>
+            <RadioButton x:Name="Default" Content="Default" GroupName="Backgrounds" IsChecked="True" Checked="BackgroundRadio_Checked" Margin="5"/>
+            <RadioButton x:Name="Bg1Radio" Content="Background 1" GroupName="Backgrounds" Checked="BackgroundRadio_Checked" Margin="5"/>
             <RadioButton x:Name="Bg2Radio" Content="Background 2" GroupName="Backgrounds" Checked="BackgroundRadio_Checked" Margin="5"/>
             <RadioButton x:Name="Bg3Radio" Content="Background 3" GroupName="Backgrounds" Checked="BackgroundRadio_Checked" Margin="5"/>
             <RadioButton x:Name="Bg4Radio" Content="Background 4" GroupName="Backgrounds" Checked="BackgroundRadio_Checked" Margin="5"/>

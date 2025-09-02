@@ -56,7 +56,7 @@ namespace Minesweeper.Pages
             _mainFrame = mainFrame;
             Engine.Init(boardSize, mineCount, tileSize);
             InitializeComponent();
-            bgSounds.PlayLooping();
+            
 
             ResetButton.Click += Reset_Click;
 
@@ -64,16 +64,12 @@ namespace Minesweeper.Pages
             {
                 boom.Play();
                 DisableBoard();
-                
-                boom.Stop();
             };
 
             Engine.GameWon += () =>
             {
                 winnar.Play();
                 DisableBoard();
-                
-                winnar.Stop();
             };
 
 
@@ -83,6 +79,7 @@ namespace Minesweeper.Pages
             LoadTileImages();
             InitializeBoard();
             HookEngineEvents();
+            bgSounds.PlayLooping();
         }
 
         private void LoadTileImages()

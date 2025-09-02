@@ -43,6 +43,7 @@ namespace Minesweeper.Pages
 
             bgImages = new ImageBrush[]
             {
+                ConvertToBrush(Properties.Resources.defaultbg),
                 ConvertToBrush(Properties.Resources.bg1),
                 ConvertToBrush(Properties.Resources.bg2),
                 ConvertToBrush(Properties.Resources.bg3),
@@ -54,10 +55,11 @@ namespace Minesweeper.Pages
         {
             ImageBrush selectedBg = Application.Current.Resources["AppBackground"] as ImageBrush;
 
-            if (Bg1Radio.IsChecked == true) selectedBg = bgImages[0];
-            else if (Bg2Radio.IsChecked == true) selectedBg = bgImages[1];
-            else if (Bg3Radio.IsChecked == true) selectedBg = bgImages[2];
-            else if (Bg4Radio.IsChecked == true) selectedBg = bgImages[3];
+            if (Default.IsChecked == true) selectedBg = bgImages[0];
+            else if (Bg1Radio.IsChecked == true) selectedBg = bgImages[1];
+            else if (Bg2Radio.IsChecked == true) selectedBg = bgImages[2];
+            else if (Bg3Radio.IsChecked == true) selectedBg = bgImages[3];
+            else if (Bg4Radio.IsChecked == true) selectedBg = bgImages[4];
 
             selectedBg.Stretch = Stretch.UniformToFill;
 
@@ -79,14 +81,16 @@ namespace Minesweeper.Pages
         {
             if (bgImages == null) return;
 
-            if (Bg1Radio.IsChecked == true)
+            if (Default.IsChecked == true)
                 PreviewArea.Background = bgImages[0];
-            else if (Bg2Radio.IsChecked == true)
+            else if (Bg1Radio.IsChecked == true)
                 PreviewArea.Background = bgImages[1];
-            else if (Bg3Radio.IsChecked == true)
+            else if (Bg2Radio.IsChecked == true)
                 PreviewArea.Background = bgImages[2];
-            else if (Bg4Radio.IsChecked == true)
+            else if (Bg3Radio.IsChecked == true)
                 PreviewArea.Background = bgImages[3];
+            else if (Bg4Radio.IsChecked == true)
+                PreviewArea.Background = bgImages[4];
         }
 
     }
