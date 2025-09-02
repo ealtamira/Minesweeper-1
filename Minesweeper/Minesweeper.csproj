@@ -8,4 +8,107 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+<<<<<<< Updated upstream
+=======
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Optimize>True</Optimize>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'" />
+
+  <ItemGroup>
+    <None Remove="Resources\Audio\click.wav" />
+    <None Remove="Resources\Audio\explosion.wav" />
+    <None Remove="Resources\Audio\main_menu.wav" />
+    <None Remove="Resources\Audio\pop.wav" />
+    <None Remove="Resources\Audio\winnar.wav" />
+    <None Remove="Resources\Free Pixel Art Forest\Preview\Background.png" />
+    <None Remove="Resources\Images\0.jpg" />
+    <None Remove="Resources\Images\1.jpg" />
+    <None Remove="Resources\Images\2.jpg" />
+    <None Remove="Resources\Images\3.jpg" />
+    <None Remove="Resources\Images\4.jpg" />
+    <None Remove="Resources\Images\5.jpg" />
+    <None Remove="Resources\Images\6.jpg" />
+    <None Remove="Resources\Images\7.jpg" />
+    <None Remove="Resources\Images\8.jpg" />
+    <None Remove="Resources\Images\defusedmine.jpg" />
+    <None Remove="Resources\Images\flag.png" />
+    <None Remove="Resources\Images\mine.jpg" />
+    <None Remove="Resources\Images\unclicked.jpg" />
+    <None Remove="Resources\Nature Landscapes Free Pixel Art\nature_1\orig.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Audio\click.wav" />
+    <EmbeddedResource Include="Resources\Audio\explosion.wav" />
+    <EmbeddedResource Include="Resources\Audio\main_menu.wav" />
+    <EmbeddedResource Include="Resources\Audio\pop.wav" />
+    <EmbeddedResource Include="Resources\Audio\winnar.wav" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Free Pixel Art Forest\Preview\Background.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\0.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\1.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\2.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\3.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\4.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\5.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\6.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\7.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\8.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\defusedmine.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\flag.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\mine.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\unclicked.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Nature Landscapes Free Pixel Art\nature_1\orig.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+>>>>>>> Stashed changes
 </Project>
