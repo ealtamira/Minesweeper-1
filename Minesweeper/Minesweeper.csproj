@@ -2,14 +2,15 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net7.0-windows</TargetFramework>
-    <Nullable>enable</Nullable>
+    <TargetFramework>net8.0-windows8.0</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <ImplicitUsings>enable</ImplicitUsings>
+    <SupportedOSPlatformVersion>8.0</SupportedOSPlatformVersion>
+    <UseWPF>True</UseWPF>
+    <StartupObject>Minesweeper.App</StartupObject>
+    <NuGetAuditMode>all</NuGetAuditMode>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
 
-<<<<<<< Updated upstream
-=======
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <Optimize>True</Optimize>
   </PropertyGroup>
@@ -17,11 +18,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'" />
 
   <ItemGroup>
+
     <None Remove="Resources\Audio\click.wav" />
     <None Remove="Resources\Audio\explosion.wav" />
     <None Remove="Resources\Audio\main_menu.wav" />
     <None Remove="Resources\Audio\pop.wav" />
     <None Remove="Resources\Audio\winnar.wav" />
+
     <None Remove="Resources\Free Pixel Art Forest\Preview\Background.png" />
     <None Remove="Resources\Images\0.jpg" />
     <None Remove="Resources\Images\1.jpg" />
@@ -40,6 +43,7 @@
   </ItemGroup>
 
   <ItemGroup>
+
     <EmbeddedResource Include="Resources\Audio\click.wav" />
     <EmbeddedResource Include="Resources\Audio\explosion.wav" />
     <EmbeddedResource Include="Resources\Audio\main_menu.wav" />
@@ -48,6 +52,7 @@
   </ItemGroup>
 
   <ItemGroup>
+
     <Resource Include="Resources\Free Pixel Art Forest\Preview\Background.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
@@ -110,5 +115,4 @@
     </EmbeddedResource>
   </ItemGroup>
 
->>>>>>> Stashed changes
 </Project>

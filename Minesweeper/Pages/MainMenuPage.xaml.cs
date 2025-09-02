@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Media;
+
 using System.Collections.Generic;
 using System.Configuration;
 using System.Windows;
@@ -15,7 +16,6 @@ namespace Minesweeper.Pages
     {
         private Frame _mainFrame;
         SoundPlayer bgm = new SoundPlayer(Properties.Resources.main_menu);
-
         public MainMenuPage(Frame mainFrame)
         {
             InitializeComponent();
