@@ -18,10 +18,10 @@ namespace Minesweeper.Pages
     public partial class GameBoardPage : Page
     {
         private SoundPlayer click = new SoundPlayer(Properties.Resources.pop);
-        private SoundPlayer bgSounds = new SoundPlayer(Properties.Resources.main_menu);
         private SoundPlayer mark = new SoundPlayer(Properties.Resources.click);
         private SoundPlayer boom = new SoundPlayer(Properties.Resources.explosion);
         private SoundPlayer winnar = new SoundPlayer(Properties.Resources.winnar);
+        private SoundPlayer bgSounds = new SoundPlayer(Properties.Resources.main_menu);
         // --- Convert WinForms Image to WPF ImageBrush ---
         private ImageBrush ConvertToBrush(System.Drawing.Image img)
         {
@@ -108,6 +108,7 @@ namespace Minesweeper.Pages
         {
             GameBoard.Children.Clear();
             buttons = new Button[boardSize, boardSize];
+            bgSounds.Load();
 
             int padding = 5;
             int totalWidth = boardSize * tileSize + padding * 2;
