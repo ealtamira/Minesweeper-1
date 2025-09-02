@@ -19,6 +19,14 @@
         </StackPanel>
 
 
+        <!-- Troll Selector -->
+        <TextBlock Text="Background:" Margin="0,10,0,5"/>
+        <WrapPanel>
+            <RadioButton x:Name="Normal" Content="Normal" GroupName="Backgrounds" IsChecked="True" Checked="BackgroundRadio_Checked" Margin="5"/>
+            <RadioButton x:Name="Troll" Content="Troll" GroupName="Backgrounds" Checked="BackgroundRadio_Checked" Margin="5"/>
+        </WrapPanel>
+
+
         <!-- Background Selector -->
         <TextBlock Text="Background:" Margin="0,10,0,5"/>
         <WrapPanel>
