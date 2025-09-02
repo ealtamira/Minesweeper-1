@@ -68,10 +68,12 @@ namespace Minesweeper.Pages
 
             // Save board size and mine count
             if (int.TryParse(BoardSizeBox.Text, out int boardSize))
-                Application.Current.Resources["BoardSize"] = boardSize;
+                if (boardSize >= 5 && boardSize <= 30) // Validate size
+                    Application.Current.Resources["BoardSize"] = boardSize;
 
             if (int.TryParse(MineCountBox.Text, out int mineCount))
-                Application.Current.Resources["MineCount"] = mineCount;
+                if (mineCount >= 1 && mineCount < (boardSize * boardSize)) // Validate mine count
+                    Application.Current.Resources["MineCount"] = mineCount;
 
             // Navigate back to main menu
             mainFrame.Navigate(new Pages.MainMenuPage(mainFrame));
