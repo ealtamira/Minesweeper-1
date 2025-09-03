@@ -99,8 +99,8 @@ namespace Minesweeper.Pages
 
         private void GameMode_Checked(object sender, RoutedEventArgs e)
         {
-            if (Normal.IsChecked == true) isTroll = false;
-            else if (Troll.IsChecked == true) isTroll = true;
+            if (Normal.IsChecked == true) ((App)Application.Current).isTroll = false;
+            else if (Troll.IsChecked == true) ((App)Application.Current).isTroll = true;
         }
     }
 }
