@@ -10,8 +10,6 @@ namespace Minesweeper.Pages
 {
     public partial class SettingsPage : Page
     {
-        public bool isTroll = ((App)Application.Current).isTroll;
-
         private Frame mainFrame;
         private ImageBrush[] bgImages;
 
