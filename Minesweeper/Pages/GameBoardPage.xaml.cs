@@ -17,11 +17,13 @@ namespace Minesweeper.Pages
     /// </summary>
     public partial class GameBoardPage : Page
     {
-        private SoundPlayer click = new SoundPlayer(Properties.Resources.pop);
-        private SoundPlayer mark = new SoundPlayer(Properties.Resources.click);
-        private SoundPlayer boom = new SoundPlayer(Properties.Resources.explosion);
-        private SoundPlayer winnar = new SoundPlayer(Properties.Resources.winnar);
-        private SoundPlayer bgSounds = new SoundPlayer(Properties.Resources.main_menu);
+        public bool isTroll = ((App)Application.Current).isTroll;
+
+        private SoundPlayer click;
+        private SoundPlayer mark;
+        private SoundPlayer boom;
+        private SoundPlayer winnar;
+
         // --- Convert WinForms Image to WPF ImageBrush ---
         private ImageBrush ConvertToBrush(System.Drawing.Image img)
         {
@@ -57,6 +59,20 @@ namespace Minesweeper.Pages
             Engine.Init(boardSize, mineCount, tileSize);
             InitializeComponent();
 
+            if (!isTroll)
+            {
+                click = new SoundPlayer(Properties.Resources.pop);
+                mark = new SoundPlayer(Properties.Resources.click);
+                boom = new SoundPlayer(Properties.Resources.explosion);
+                winnar = new SoundPlayer(Properties.Resources.winnar);
+            }
+            else
+            {
+                click = new SoundPlayer(Properties.Resources.trollPop);
+                mark = new SoundPlayer(Properties.Resources.trollClick);
+                boom = new SoundPlayer(Properties.Resources.trollExplosion);
+                winnar = new SoundPlayer(Properties.Resources.trollWinnar);
+            }
 
             ResetButton.Click += Reset_Click;
 

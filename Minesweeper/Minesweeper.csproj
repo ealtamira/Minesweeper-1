@@ -19,6 +19,14 @@
 
   <ItemGroup>
 
+    <None Remove="Resources\Audio\trollClick.wav" />
+
+    <None Remove="Resources\Audio\trollExplosion.wav" />
+
+    <None Remove="Resources\Audio\trollPop.wav" />
+
+    <None Remove="Resources\Audio\trollWinnar.wav" />
+
     <None Remove="Resources\Free Pixel Art Forest\Preview\Background.png" />
     <None Remove="Resources\Images\0.jpg" />
     <None Remove="Resources\Images\1.jpg" />
@@ -34,6 +42,13 @@
     <None Remove="Resources\Images\mine.jpg" />
     <None Remove="Resources\Images\unclicked.jpg" />
     <None Remove="Resources\Nature Landscapes Free Pixel Art\nature_1\orig.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Audio\trollClick.wav" />
+    <EmbeddedResource Include="Resources\Audio\trollExplosion.wav" />
+    <EmbeddedResource Include="Resources\Audio\trollPop.wav" />
+    <EmbeddedResource Include="Resources\Audio\trollWinnar.wav" />
   </ItemGroup>
 
   <ItemGroup>

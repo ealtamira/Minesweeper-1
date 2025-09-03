@@ -8,7 +8,7 @@
         <!-- Global Settings -->
         <sys:Int32 x:Key="BoardSize">10</sys:Int32>
         <sys:Int32 x:Key="MineCount">10</sys:Int32>
-        
+
         <!-- Global Background Images -->
         <ImageBrush x:Key="AppBackground" ImageSource="/Resources/Free Pixel Art Forest/Preview/Background.png"/>
 
@@ -43,11 +43,11 @@
 
         <!-- TextBlock Style for Main Menu Title -->
         <Style x:Key="MainMenuTitleStyle" TargetType="TextBlock">
-            <Setter Property="FontSize" Value="36"/>
+            <Setter Property="FontSize" Value="48"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Foreground" Value="#FF4CAF50"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="Margin" Value="20"/>
+            <Setter Property="Margin" Value="40"/>
         </Style>
 
         <!-- StackPanel Style for MainMenuPage -->
@@ -126,6 +126,41 @@
                             </Trigger>
                             <Trigger Property="IsPressed" Value="True">
                                 <Setter TargetName="border" Property="Background" Value="#FF4B00CC"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- TROLOLOLOL BUTTON STYLE -->
+        <Style x:Key="CoolButtonStyle" TargetType="Button">
+            <Setter Property="FontFamily" Value="Unispace"/>
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontWeight" Value="DemiBold"/>
+            <Setter Property="Foreground" Value="#FF4CAF50"/>
+            <Setter Property="Background" Value="Black"/>
+            <Setter Property="BorderBrush" Value="#FF4CAF50"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Margin" Value="30"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border"
+            Background="{TemplateBinding Background}"
+            BorderBrush="{TemplateBinding BorderBrush}"
+            BorderThickness="{TemplateBinding BorderThickness}"
+            CornerRadius="6">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="White"/>
+                                <Setter Property="BorderBrush" Value="White"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#FF4CAF50"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>

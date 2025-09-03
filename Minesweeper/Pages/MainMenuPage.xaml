@@ -4,9 +4,9 @@
       Title="MainMenuPage">
 
     <StackPanel Style="{StaticResource MainMenuStackPanelStyle}">
-        <TextBlock Text="MineSweeper" Style="{StaticResource MainMenuTitleStyle}" Background="DimGray"/>
-        <Button Content="Start Game" Width="200" Height="50" Click="StartGameButton_Click"/>
-        <Button Content="Settings" Width="200" Height="50" Click="Setting_Click"/>
-        <Button Content="Exit" Width="200" Height="50" Click="Exit_Click"/>
+        <TextBlock Text="Minesweeper" Style="{StaticResource MainMenuTitleStyle}" Background="Black" Padding="25" FontFamily="Unispace"/>
+        <Button Content="Start Game" Style="{StaticResource CoolButtonStyle}" Width="200" Height="50" Click="StartGameButton_Click"/>
+        <Button Content="Settings" Style="{StaticResource CoolButtonStyle}" Width="200" Height="50" Click="Setting_Click"/>
+        <Button Content="Exit" Style="{StaticResource CoolButtonStyle}" Width="200" Height="50" Click="Exit_Click"/>
     </StackPanel>
 </Page>

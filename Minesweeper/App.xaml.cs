@@ -8,6 +8,8 @@ namespace Minesweeper
     /// </summary>
     public partial class App : Application
     {
+        public bool isTroll { get; set; } = false;
+
         public App()
         {
             InitializeComponent();

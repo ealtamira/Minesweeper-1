@@ -10,6 +10,8 @@ namespace Minesweeper.Pages
 {
     public partial class SettingsPage : Page
     {
+        public bool isTroll = ((App)Application.Current).isTroll;
+
         private Frame mainFrame;
         private ImageBrush[] bgImages;
 
@@ -99,7 +101,8 @@ namespace Minesweeper.Pages
 
         private void GameMode_Checked(object sender, RoutedEventArgs e)
         {
-
+            if (Normal.IsChecked == true) isTroll = false;
+            else if (Troll.IsChecked == true) isTroll = true;
         }
     }
 }
